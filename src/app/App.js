@@ -1,11 +1,15 @@
-import "./css/index.css";
+import React from "react";
+import "../../src/index.css";
+import ProductList from "./components/ProductList/ProductList";
+import CreateProduct from "./components/CreateProduct/CreateProduct";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">Hello</header>
-    </div>
-  );
+   return (
+   <div>
+    <CreateProduct />
+    <ProductList />
+   </div>
+   )
 }
 
 export default App;

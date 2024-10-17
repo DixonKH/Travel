@@ -1,0 +1,12 @@
+body {
+    background-color:"#00b09b";
+    padding-top: 20px;
+}
+
+.text-grey {
+    color: "#aaa";
+}
+
+.badge-margin-240 {
+    margin-left: 240px;
+}
