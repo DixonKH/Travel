@@ -4,7 +4,7 @@ function CreateForm() {
   let [pName, updateName] = useState("");
   let [pPrice, updatePrice] = useState("");
   let [pDesc, updateDesc] = useState("");
-  let [pAvailability, updateAvailability] = useState("");
+  let [pAvailability, updateAvailability] = useState(false);
   let [pImageUrl, updateImageUrl] = useState("");
 
   //  let [userInput, updateUserInput] = useState({
@@ -68,7 +68,12 @@ function CreateForm() {
       isAvailable: Boolean(pAvailability),
       image: pImageUrl,
     };
-    console.log(product);   
+
+    updateName('');
+    updateDesc('');
+    updatePrice('');
+    updateAvailability(false);
+    updateImageUrl('');
   }
 
   return (
@@ -79,6 +84,7 @@ function CreateForm() {
           type="text"
           className="form-control"
           id="name"
+          value={pName}
           placeholder="Product Name"
           onChange={nameInputHandler}
         />
@@ -91,6 +97,7 @@ function CreateForm() {
           step="0.01"
           className="form-control"
           id="price"
+          value={pPrice}
           placeholder="Product Price"
           onChange={priceInputHandler}
         />
@@ -102,6 +109,7 @@ function CreateForm() {
           type="text"
           className="form-control"
           id="description"
+          value={pDesc}
           placeholder="Product Description"
           onChange={descriptionInputHandler}
         />
@@ -113,6 +121,7 @@ function CreateForm() {
           type="checkbox"
           role="switch"
           id="isAvailable"
+          checked={pAvailability}
           onChange={availabilityInputHandler}
         />
         <label class="form-check-label" for="isAvailable">
@@ -126,6 +135,7 @@ function CreateForm() {
           type="file"
           className="form-control"
           id="select-image"
+          value={pImageUrl}
           onChange={imageInputHandler}
         />
       </div>
