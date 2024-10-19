@@ -4,28 +4,25 @@ import Products from "./Products";
 
 function ProductList(props) {
   console.log("newProduct: ", props.newProductList);
-  
-    return (
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
+  //if(props.newProductList.length === 0) return <h3>No Products Available</h3>
+  return props.newProductList.length === 0 ? <h3>No Products Available</h3> :  
+    (
             <ul className="shadow">
               {
               props.newProductList.map((product) => {
                 return (
                   <Products
-                    key={product.id}
-                    id={product.id}
-                    name={product.name}
-                    description={product.desc}
-                    isAvailable={product.isAvailable}
-                    price={product.price}
-                    image={product.image}
+                    key={product?.id}
+                    id={product?.id}
+                    name={product?.name}
+                    description={product?.desc}
+                    isAvailable={product?.isAvailable}
+                    price={product?.price}
+                    image={product?.image}
                   />
                 );
               })}
             </ul>
-          </div>
-        </div>
       );
 }
 

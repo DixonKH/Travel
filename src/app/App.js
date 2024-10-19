@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../src/index.css";
 import ProductList from "./components/ProductList/ProductList";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
+import FilterProduct from "./components/FilterProduct/FilterProduct";
 
 const products = [
   {
@@ -36,22 +37,40 @@ const products = [
     isAvailable: true,
     image: "images/maldives2.jpg",
   },
-];
-
+  ];
 
 function App() {
-  const [newProductList, setNewProductList] = useState(products); 
+  const [newProductList, setNewProductList] = useState(products);
+  let [filterText, updateFilterText] = useState("all");
+
+  let filteredProductList = newProductList.filter((product) => {
+      if(filterText === 'available') {
+        return product.isAvailable === true;
+      }else if(filterText === 'unavailable') { 
+        return product.isAvailable === false;
+       } else {
+        return product;
+       }
+  }) 
 
   function createProduct(product) {
-    setNewProductList([product, ...newProductList]);  
-    console.log("app product: ", product);
+    product.id = newProductList.length + 1;
+    setNewProductList([product, ...newProductList]);
   }
-   return (
-   <div>
-    <CreateProduct createProduct={createProduct} />
-    <ProductList newProductList={newProductList} />
-   </div>
-   )
+
+  function onFilterValueSelected(filterValue) {
+    updateFilterText(filterValue);   
+  }
+
+  return (
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <CreateProduct createProduct={createProduct} />
+        <FilterProduct filterValueSelected={onFilterValueSelected} />
+        <ProductList newProductList={filteredProductList} />
+      </div>
+    </div>
+  );
 }
 
 export default App;

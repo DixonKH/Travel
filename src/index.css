@@ -10,3 +10,11 @@ body {
 .badge-margin-240 {
     margin-left: 240px;
 }
+
+.filter-area {
+    width: 100%;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+}
