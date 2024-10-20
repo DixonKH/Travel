@@ -3,7 +3,7 @@ import Products from "./Products";
 
 
 function ProductList(props) {
-  console.log("newProduct: ", props.newProductList);
+  console.log("newProduct: ", props.newProductList.length);
   //if(props.newProductList.length === 0) return <h3>No Products Available</h3>
   return props.newProductList.length === 0 ? <h3>No Products Available</h3> :  
     (
