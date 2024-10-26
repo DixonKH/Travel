@@ -4,7 +4,7 @@ function Button(props) {
     console.log("Button component executed!");
     
     return (
-        <button onClick={props.eventHandler} class="btn btn-primary">{props.children}</button>
+        <button onClick={props.eventHandler} disabled={props.disable} class="btn btn-primary">{props.children}</button>
     );  
 }
 

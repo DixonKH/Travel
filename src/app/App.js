@@ -3,6 +3,8 @@ import "../../src/index.css";
 import ProductList from "./components/ProductList/ProductList";
 import CreateProduct from "./components/CreateProduct/CreateProduct";
 import FilterProduct from "./components/FilterProduct/FilterProduct";
+import Component1 from "./components/Component1";
+import RefsDemo from "./components/RefsDemo";
 
 const products = [
   {
@@ -40,36 +42,42 @@ const products = [
   ];
 
 function App() {
-  const [newProductList, setNewProductList] = useState(products);
-  let [filterText, updateFilterText] = useState("all");
+  // const [newProductList, setNewProductList] = useState(products);
+  // let [filterText, updateFilterText] = useState("all");
 
-  let filteredProductList = newProductList.filter((product) => {
-      if(filterText === 'available') {
-        return product.isAvailable === true;
-      }else if(filterText === 'unavailable') { 
-        return product.isAvailable === false;
-       } else {
-        return product;
-       }
-  }) 
+  // let filteredProductList = newProductList.filter((product) => {
+  //     if(filterText === 'available') {
+  //       return product.isAvailable === true;
+  //     }else if(filterText === 'unavailable') { 
+  //       return product.isAvailable === false;
+  //      } else {
+  //       return product;
+  //      }
+  // }) 
 
-  function createProduct(product) {
-    product.id = newProductList.length + 1;
-    setNewProductList([product, ...newProductList]);
-  }
+  // function createProduct(product) {
+  //   product.id = newProductList.length + 1;
+  //   setNewProductList([product, ...newProductList]);
+  // }
 
-  function onFilterValueSelected(filterValue) {
-    updateFilterText(filterValue);   
-  }
+  // function onFilterValueSelected(filterValue) {
+  //   updateFilterText(filterValue);   
+  // }
 
   return (
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <CreateProduct createProduct={createProduct} />
-        <FilterProduct filterValueSelected={onFilterValueSelected} />
-        <ProductList newProductList={filteredProductList} />
-      </div>
-    </div>
+    // <div class="row">
+    //   <div class="col-lg-8 mx-auto">
+    //     {/* <CreateProduct createProduct={createProduct} />
+    //     <FilterProduct filterValueSelected={onFilterValueSelected} />
+    //     <ProductList newProductList={filteredProductList} /> */}
+
+    //   </div>
+    // </div>
+    <>
+    <h2>This is a App Component!</h2>
+    <Component1 />
+    <RefsDemo />
+    </>
   );
 }
 
