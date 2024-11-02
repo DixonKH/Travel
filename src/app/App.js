@@ -1,83 +1,49 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import "../../src/index.css";
-import ProductList from "./components/ProductList/ProductList";
-import CreateProduct from "./components/CreateProduct/CreateProduct";
-import FilterProduct from "./components/FilterProduct/FilterProduct";
-import Component1 from "./components/Component1";
-import RefsDemo from "./components/RefsDemo";
 
-const products = [
-  {
-    id: 1,
-    name: "Madagaskar",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing el, Lorem ipsum dolor sit amet, consectetur adipiscing el",
-    price: 120,
-    isAvailable: true,
-    image: "/images/borabora.jpg",
-  },
-  {
-    id: 2,
-    name: "Gavai",
-    desc: "Lorem Ipsum, Lorem  dolor sit amet, consectetur adipiscing el, Lorem ipsum dolor sit amet, consectetur adipiscing el",
-    price: 140,
-    isAvailable: true,
-    image: "images/keywest.jpg",
-  },
-  {
-    id: 3,
-    name: "Morris",
-    desc: "Lorem Ipsum, Lorem  dolor sit amet, consectetur adipiscing el, Lorem ipsum dolor sit amet, consectetur adipiscing el",
-    price: 150,
-    isAvailable: false,
-    image: "images/maldives.jpg",
-  },
-  {
-    id: 4,
-    name: "Helson",
-    desc: "Lorem Ipsum, Lorem  dolor sit amet, consectetur adipiscing el, Lorem ipsum dolor sit amet, consectetur adipiscing el",
-    price: 160,
-    isAvailable: true,
-    image: "images/maldives2.jpg",
-  },
-  ];
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return  {
+        name: state.name,
+        age: state.age + 1};
+    case "decrement":
+      return {age: state.age - 1};
+    case "change_name": 
+         return {
+          name: action.nextName,
+          age: state.age
+        };
+    default:
+      return state;
+  } 
+
+}
 
 function App() {
-  // const [newProductList, setNewProductList] = useState(products);
-  // let [filterText, updateFilterText] = useState("all");
+  const [state, dispatch] = useReducer(reducer, {name: "", age: 28});
 
-  // let filteredProductList = newProductList.filter((product) => {
-  //     if(filterText === 'available') {
-  //       return product.isAvailable === true;
-  //     }else if(filterText === 'unavailable') { 
-  //       return product.isAvailable === false;
-  //      } else {
-  //       return product;
-  //      }
-  // }) 
+  function incrementHandler() {
+    dispatch({type: "increment"});
+  }
 
-  // function createProduct(product) {
-  //   product.id = newProductList.length + 1;
-  //   setNewProductList([product, ...newProductList]);
-  // }
+  function decrementHandler() {
+    dispatch({type: "decrement"});
+  }
 
-  // function onFilterValueSelected(filterValue) {
-  //   updateFilterText(filterValue);   
-  // }
+  function changeNameHandler(e) {
+    dispatch({type: "change_name", nextName: e.target.value});
+  } 
 
   return (
-    // <div class="row">
-    //   <div class="col-lg-8 mx-auto">
-    //     {/* <CreateProduct createProduct={createProduct} />
-    //     <FilterProduct filterValueSelected={onFilterValueSelected} />
-    //     <ProductList newProductList={filteredProductList} /> */}
+    <div>
+      <button onClick={incrementHandler}>Increment your age</button>
+      <h3>{state.age}</h3>
+      <button onClick={decrementHandler}>Decrement your age</button>
+      <input type="text" value={state.name} onChange={changeNameHandler} />  
+      <h3>Your name is: {state.name}</h3>  
 
-    //   </div>
-    // </div>
-    <>
-    <h2>This is a App Component!</h2>
-    <Component1 />
-    <RefsDemo />
-    </>
+    </div>
   );
 }
 
