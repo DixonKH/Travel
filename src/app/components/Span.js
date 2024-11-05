@@ -4,7 +4,7 @@ function Span(props) {
     console.log("Span executed!");  
   return (
     <div>
-      {props.children}
+      {props.children[0]}
     </div>
   )
 }
