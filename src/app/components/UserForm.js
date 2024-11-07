@@ -2,6 +2,7 @@ import React, {useState, useRef} from 'react'
 
 function UserForm() {
   const [firstName, setFirstName] = useState(''); 
+  const [nameValid, setNameValid] = useState(true);
   let userName = useRef();
 
   function onChangeName(e) {
@@ -9,10 +10,15 @@ function UserForm() {
   }
   function onSubmitHandler(e) {
      e.preventDefault();  
-    // console.log(firstName);
-    // setFirstName('');
-    console.log(userName.current.value);
-    userName.current.value = "";
+     if(firstName.trim() === '') {
+      setNameValid(false);
+        return;
+     }
+     setNameValid(true);  
+    console.log(firstName);
+    setFirstName('');
+    // console.log(userName.current.value);
+    // userName.current.value = "";
     
   }
   return (
@@ -23,7 +29,8 @@ function UserForm() {
            <div className='user-form'>
              <form className='form-container' onSubmit={onSubmitHandler}>
                 <div>
-                    <input className='name-input' type='text' onChange={onChangeName} value={firstName} ref={userName} placeholder='Firs Name' /> 
+                    <input className='name-input' type='text' onChange={onChangeName} value={firstName} ref={userName} placeholder='Firs Name' />
+                   { !nameValid && <div><span style={{color: 'red'}}>First name is required field</span></div> }
                     <input className='name-input' type='text' placeholder='Last Name' /> 
                 </div>
                 <div>
