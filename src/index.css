@@ -3,26 +3,95 @@ body {
     padding-top: 20px;
 }
 
-.box {
+.modal-container {
+    width: 600px;
+    heigt: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    border:1px solid #48c072;
+    border-top: 3px solid #48c072;
+    border-bottom: 3px solid #48c072;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
+    align-items: flex-start; 
+    justify-content: center;       
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;  
 }
 
-.userName {
-    width: 400px;
-    padding: 10px;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px; 
 }
 
-.userPassword {
-    width: 400px;
-    padding: 10px;
+.name-input {
+    padding: 5px;
+    width: 265px;
+    border:1px solid #48c072;   
+    outline: none;
+    border-radius: 5px; 
+}
+.name-input:nth-child(2) {
+    margin-left: 20px;   
 }
 
-.userLogin {
-    width: 400px;
-    padding: 10px;
+.email-input {
+    padding: 5px;
+    width: 550px;
+    border:1px solid #48c072;   
+    outline: none;
+    border-radius: 5px; 
+}
+
+.password-input {
+    padding: 5px;
+    width: 265px;
+    border:1px solid #48c072;   
+    outline: none;
+    border-radius: 5px; 
+}
+
+.password-input:nth-child(2) {
+    margin-left: 20px;  
+}
+
+.city-input {
+    padding: 5px;
+    width: 265px;
+    border:1px solid #48c072;   
+    outline: none;
+    border-radius: 5px; 
+}
+
+.city-input:nth-child(2) {
+    margin-left: 20px;  
+}
+
+.date-input {
+    padding: 5px;
+    width: 265px;
+    border:1px solid #48c072;   
+    outline: none;
+    border-radius: 5px; 
+}
+
+.date-input:nth-child(2) {
+    margin-left: 20px;  
+}
+
+.add-user-btn {
+    width: 550px;
+    padding: 7px 20px;
+    background-color: #48c072;
+    color: #fff;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;    
 }
